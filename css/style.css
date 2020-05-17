@@ -7,9 +7,14 @@ html{
     text-align: center;
 }
 
-img{
+body{
+
     padding-top: 50px;
-    width:50vw;
+}
+
+img{
+    height: 200px;
+    width: 200px;
     border-radius: 100%;
 }
 
@@ -48,3 +53,4 @@ p{
  .github{
      color: #343434;
  }
+
