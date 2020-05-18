@@ -16,12 +16,14 @@ img{
     height: 200px;
     width: 200px;
     border-radius: 100%;
+    animation: image 1.4s;
 }
 
 h1{
     padding-top: 0;
     font-size: 4rem;
     font-family: 'Poppins', sans-serif;
+    animation: h1 1.4s;
 }
 
 p{
@@ -32,10 +34,12 @@ p{
     width: 50%;
     line-height: 1.5;
     font-family: 'Ubuntu Mono', monospace;
+    animation: para 1.4s;
 }
  .social{
      padding-top: 4rem;
      font-size: 2.4rem;
+     animation: social 1.4s .3s;
  }
 
  .spotify{
@@ -54,3 +58,81 @@ p{
      color: #343434;
  }
 
+/* Animations */
+
+@keyframes image{
+
+    0%{
+        opacity: 0.1;
+        transform: translateY(-200px);
+    }
+    
+    90%{
+        transform: translateY(10px);
+    }
+
+    100%{
+        opacity: 1;
+       transform: translate(0);
+    }
+
+}
+
+@keyframes h1{
+
+     0%{
+         opacity: 0.1;
+         transform: translateX(-400px);
+     }
+     
+     90%{
+         transform: translateX(10px);
+     }
+
+     100%{
+         opacity: 1;
+        transform: translate(0);
+     }
+
+}
+
+@keyframes para{
+
+    0%{
+        opacity: 0.1;
+        transform: translateX(400px);
+    }
+
+    90%{
+        transform: translateX(-10px);
+    }
+
+    100%{
+        opacity: 1;
+       transform: translate(0);
+    }
+
+}
+
+@keyframes social{
+
+    0%{
+        opacity: 0.1;
+        transform: translateY(100px);
+    }
+
+    90%{
+        transform: translateY(-10px);
+    }
+
+    100%{
+       opacity: 1;
+       transform: translate(0);
+    }
+
+}
+
+.fab:hover{
+    transition: all 0.5s;
+    transform: translateY(-10px);
+}
