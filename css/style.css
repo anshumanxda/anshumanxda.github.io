@@ -39,7 +39,7 @@ p{
  .social{
      padding-top: 4rem;
      font-size: 2.4rem;
-     animation: social 1.4s .3s;
+     animation: social 1.4s;
  }
 
  .spotify{
