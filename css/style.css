@@ -138,13 +138,14 @@ p{
 
 @media only screen and (min-width: 768px) {
     html{
-        background-color: #a7e9af;
+        background-color: #c9b6e4;
         color: #000000;
         padding: 5% 15% 0 15%;
     }
 
     img{
     opacity: .8;
+    transition: all .5s;
     }
 
     img:hover{
