@@ -20,13 +20,17 @@ img{
 
 h1{
     padding-top: 0;
-    font-size: 4rem;
+    font-size: 2.7rem;
     font-family: 'Poppins', sans-serif;
-    animation: h1 1.4s;
+    animation: h1 1.4s;   
+}
+
+span{
+    color: #ff427f;
 }
 
 p{
-    padding-top: 0;
+    padding-top: 1rem;
     padding-bottom: 15px;
     font-size: 1.5rem;
     margin: 0 auto;
@@ -154,7 +158,12 @@ p{
     }
 
     h1{
+        font-size: 4rem;
         font-family: 'Montserrat', sans-serif;
+    }
+
+    p{
+        padding-top: 0;
     }
 
     .intro{
