@@ -30,10 +30,9 @@ jobs:
       - name: Detect package manager
         id: detect-package-manager
         run: |
-          cd source
-          if [ -f "yarn.lock" ]; then
+          if [ -f "source/yarn.lock" ]; then
             echo "package-manager=yarn" >> $GITHUB_OUTPUT
-          elif [ -f "package-lock.json" ]; then
+          elif [ -f "source/package-lock.json" ]; then
             echo "package-manager=npm" >> $GITHUB_OUTPUT
           else
             echo "No package manager detected"
