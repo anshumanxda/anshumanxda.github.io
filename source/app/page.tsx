@@ -1,26 +1,30 @@
-import Hero from "@/components/hero"
 import Navbar from "@/components/navbar"
+import Hero from "@/components/hero"
+import About from "@/components/about"
+import VelocityMarquee from "@/components/velocity-marquee"
 import Experience from "@/components/experience"
 import Skills from "@/components/skills"
+import BugBash from "@/components/bug-bash"
 import Projects from "@/components/projects"
-import Education from "@/components/education"
 import Contact from "@/components/contact"
-import { ScrollArea } from "@/components/ui/scroll-area"
+import Footer from "@/components/footer"
+import { TimeMachineProvider } from "@/components/time-machine"
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-background transition-colors duration-300">
+    <TimeMachineProvider>
       <Navbar />
-      <ScrollArea className="h-[calc(100vh-4rem)]">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 space-y-20 pt-10 pb-32">
-          <Hero />
-          <Experience />
-          <Skills />
-          <Projects />
-          <Education />
-          <Contact />
-        </div>
-      </ScrollArea>
-    </main>
+      <main className="relative">
+        <Hero />
+        <VelocityMarquee items={["React", "Next.js", "TypeScript", "Framer Motion", "WebRTC", "Tailwind", "Redux"]} />
+        <About />
+        <Experience />
+        <Skills />
+        <BugBash />
+        <Projects />
+        <Contact />
+      </main>
+      <Footer />
+    </TimeMachineProvider>
   )
 }

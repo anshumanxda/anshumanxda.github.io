@@ -181,3 +181,20 @@ p{
         order: 1;
     }
 }
+/* added later: way back to the current site */
+.back-to-future{
+    position: fixed;
+    right: 16px;
+    bottom: 16px;
+    padding: 8px 14px;
+    border: 1px solid #ff427f;
+    border-radius: 999px;
+    color: #ff427f;
+    font-family: 'Ubuntu Mono', monospace;
+    font-size: 0.85rem;
+    text-decoration: none;
+}
+.back-to-future:hover{
+    background: #ff427f;
+    color: #000;
+}

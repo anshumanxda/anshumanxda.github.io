@@ -1,161 +1,69 @@
-"use client";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
-import { Mail, Phone, Linkedin, Github } from "lucide-react";
-import { motion } from "framer-motion";
-import { SectionHeader } from "@/components/ui/section-header";
+"use client"
+
+import { useState } from "react"
+import { motion } from "framer-motion"
+import { Check, Copy, Github, Linkedin } from "lucide-react"
+import { SectionHeader } from "@/components/ui/section-header"
+import { site } from "@/lib/site"
 
 export default function Contact() {
+  const [copied, setCopied] = useState(false)
+
+  const copyEmail = async () => {
+    try {
+      await navigator.clipboard.writeText(site.email)
+      setCopied(true)
+      setTimeout(() => setCopied(false), 1800)
+    } catch {
+      window.location.href = `mailto:${site.email}`
+    }
+  }
+
+  const socials = [
+    { href: site.social.linkedin, label: "LinkedIn", Icon: Linkedin },
+    { href: site.social.github, label: "GitHub", Icon: Github },
+  ]
+
   return (
-    <section id="contact" className="py-12">
-      <div className="container px-4 md:px-6">
-        <SectionHeader
-          title="Get In Touch"
-          subtitle="Have a project in mind or want to discuss opportunities? Feel free to reach out!"
-        />
+    <section id="contact" className="mx-auto max-w-6xl px-4 py-20 sm:px-6 sm:py-28">
+      <SectionHeader eyebrow="06 / Contact" title="Let's build something." subtitle="Got an idea, a role, or just want to say hi? My inbox is open." />
 
-        <div className="grid gap-8 md:grid-cols-2 mt-12">
-          <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.5 }}
-            viewport={{ once: true, margin: "-100px" }}
-          >
-            <Card className="card-hover-effect h-full">
-              <CardHeader>
-                <CardTitle>Contact Information</CardTitle>
-                <CardDescription>
-                  Feel free to reach out through any of these channels.
-                </CardDescription>
-              </CardHeader>
-              <CardContent className="space-y-4">
-                <motion.div
-                  className="flex items-center gap-3"
-                  initial={{ opacity: 0, y: 10 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.3, delay: 0.1 }}
-                  viewport={{ once: true }}
-                >
-                  <div className="flex items-center justify-center h-9 w-9 rounded-full bg-[#EA4335] text-white">
-                    <Mail className="h-5 w-5" />
-                  </div>
-                  <a
-                    href="mailto:anshumanpathak4@gmail.com"
-                    className="hover:underline hover:text-primary transition-colors"
-                  >
-                    anshumanpathak4@gmail.com
-                  </a>
-                </motion.div>
-
-                <motion.div
-                  className="flex items-center gap-3"
-                  initial={{ opacity: 0, y: 10 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.3, delay: 0.3 }}
-                  viewport={{ once: true }}
-                >
-                  <div className="flex items-center justify-center h-9 w-9 rounded-full bg-[#0A66C2] text-white">
-                    <Linkedin className="h-5 w-5" />
-                  </div>
-                  <a
-                    href="https://linkedin.com/in/anshumanxda"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="hover:underline hover:text-primary transition-colors"
-                  >
-                    linkedin.com/in/anshumanxda
-                  </a>
-                </motion.div>
-                <motion.div
-                  className="flex items-center gap-3"
-                  initial={{ opacity: 0, y: 10 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.3, delay: 0.4 }}
-                  viewport={{ once: true }}
-                >
-                  <div className="flex items-center justify-center h-9 w-9 rounded-full bg-[#24292e] text-white">
-                    <Github className="h-5 w-5" />
-                  </div>
-                  <a
-                    href="https://github.com/anshumanxda"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="hover:underline hover:text-primary transition-colors"
-                  >
-                    github.com/anshumanxda
-                  </a>
-                </motion.div>
-              </CardContent>
-            </Card>
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, x: 20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-            viewport={{ once: true, margin: "-100px" }}
-          >
-            <Card className="card-hover-effect">
-              <CardHeader>
-                <CardTitle>Send a Message</CardTitle>
-                <CardDescription>
-                  Fill out the form below and I'll get back to you as soon as
-                  possible.
-                </CardDescription>
-              </CardHeader>
-              <CardContent>
-                <form className="space-y-4">
-                  <div className="grid gap-4 md:grid-cols-2">
-                    <div className="space-y-2">
-                      <Input
-                        id="name"
-                        placeholder="Your Name"
-                        className="transition-all focus:ring-2 focus:ring-primary/50"
-                      />
-                    </div>
-                    <div className="space-y-2">
-                      <Input
-                        id="email"
-                        type="email"
-                        placeholder="Your Email"
-                        className="transition-all focus:ring-2 focus:ring-primary/50"
-                      />
-                    </div>
-                  </div>
-                  <div className="space-y-2">
-                    <Input
-                      id="subject"
-                      placeholder="Subject"
-                      className="transition-all focus:ring-2 focus:ring-primary/50"
-                    />
-                  </div>
-                  <div className="space-y-2">
-                    <Textarea
-                      id="message"
-                      placeholder="Your Message"
-                      className="min-h-[120px] transition-all focus:ring-2 focus:ring-primary/50"
-                    />
-                  </div>
-                </form>
-              </CardContent>
-              <CardFooter>
-                <Button className="w-full transition-all hover:scale-[1.02]">
-                  Send Message
-                </Button>
-              </CardFooter>
-            </Card>
-          </motion.div>
-        </div>
-      </div>
+      <motion.div
+        initial={{ opacity: 0, y: 24 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6 }}
+        viewport={{ once: true, margin: "-60px" }}
+        className="flex flex-col justify-between gap-8 rounded-3xl border border-border bg-gradient-to-br from-brand/15 via-card to-brand-2/15 p-6 sm:p-10 lg:flex-row lg:items-end"
+      >
+          <div>
+            <p className="text-sm text-muted-foreground">Email me at</p>
+            <button
+              onClick={copyEmail}
+              className="group mt-2 flex max-w-full items-center gap-3 text-left font-display text-xl font-bold sm:text-4xl"
+            >
+              <span className="break-all">{site.email}</span>
+              <span className="grid h-9 w-9 shrink-0 place-items-center rounded-full border border-border bg-background text-muted-foreground transition-colors group-hover:text-foreground">
+                {copied ? <Check className="h-4 w-4 text-emerald-500" /> : <Copy className="h-4 w-4" />}
+              </span>
+            </button>
+            <p className="mt-2 h-5 font-mono text-xs text-muted-foreground" aria-live="polite">
+              {copied ? "copied to clipboard ✓" : "click to copy"}
+            </p>
+          </div>
+          <div className="flex flex-wrap gap-3">
+            {socials.map(({ href, label, Icon }) => (
+              <a
+                key={label}
+                href={href}
+                target="_blank"
+                rel="noopener noreferrer me"
+                className="inline-flex h-11 items-center gap-2 rounded-full border border-border bg-background px-4 text-sm transition-all hover:-translate-y-0.5 hover:border-brand hover:text-brand"
+              >
+                <Icon className="h-4 w-4" /> {label}
+              </a>
+            ))}
+          </div>
+      </motion.div>
     </section>
-  );
+  )
 }
