@@ -4,53 +4,56 @@
 
 @layer base {
   :root {
-    --background: 40 20% 98%;
-    --foreground: 240 10% 8%;
-    --card: 0 0% 100%;
-    --card-foreground: 240 10% 8%;
-    --popover: 0 0% 100%;
-    --popover-foreground: 240 10% 8%;
-    --primary: 240 10% 10%;
-    --primary-foreground: 0 0% 98%;
-    --secondary: 240 5% 93%;
-    --secondary-foreground: 240 10% 12%;
-    --muted: 240 5% 93%;
-    --muted-foreground: 240 4% 40%;
-    --accent: 240 5% 92%;
-    --accent-foreground: 240 10% 12%;
-    --destructive: 0 84.2% 60.2%;
+    /* "paper & ink": cream paper, forest-green ink, mustard highlighter */
+    --background: 44 38% 93%;
+    --foreground: 158 45% 11%;
+    --card: 44 45% 96.5%;
+    --card-foreground: 158 45% 11%;
+    --popover: 44 45% 96.5%;
+    --popover-foreground: 158 45% 11%;
+    --primary: 158 50% 14%;
+    --primary-foreground: 44 45% 95%;
+    --secondary: 44 26% 86%;
+    --secondary-foreground: 158 45% 14%;
+    --muted: 44 26% 86%;
+    --muted-foreground: 155 14% 33%;
+    --accent: 44 26% 86%;
+    --accent-foreground: 158 45% 14%;
+    --destructive: 4 72% 48%;
     --destructive-foreground: 0 0% 98%;
-    --border: 240 6% 86%;
-    --input: 240 6% 86%;
-    --ring: 341 100% 63%;
+    --border: 44 20% 79%;
+    --input: 44 20% 79%;
+    --ring: 156 62% 26%;
     --radius: 0.75rem;
-    /* #ff427f — the pink from v1, carried forward */
-    --brand: 341 100% 56%;
-    --brand-2: 262 83% 62%;
+    --brand: 156 62% 26%;
+    --brand-foreground: 44 45% 96%;
+    --brand-2: 34 90% 33%;
   }
 
   .dark {
-    --background: 240 10% 5%;
-    --foreground: 0 0% 96%;
-    --card: 240 8% 9%;
-    --card-foreground: 0 0% 96%;
-    --popover: 240 8% 9%;
-    --popover-foreground: 0 0% 96%;
-    --primary: 0 0% 96%;
-    --primary-foreground: 240 10% 6%;
-    --secondary: 240 6% 15%;
-    --secondary-foreground: 0 0% 96%;
-    --muted: 240 6% 15%;
-    --muted-foreground: 240 5% 65%;
-    --accent: 240 6% 15%;
-    --accent-foreground: 0 0% 96%;
-    --destructive: 0 62.8% 45%;
+    /* "darkroom forest": deep green-black, butter yellow, mint */
+    --background: 155 32% 5%;
+    --foreground: 52 40% 92%;
+    --card: 155 26% 8%;
+    --card-foreground: 52 40% 92%;
+    --popover: 155 26% 8%;
+    --popover-foreground: 52 40% 92%;
+    --primary: 52 40% 92%;
+    --primary-foreground: 155 32% 6%;
+    --secondary: 155 18% 13%;
+    --secondary-foreground: 52 40% 92%;
+    --muted: 155 18% 13%;
+    --muted-foreground: 95 9% 63%;
+    --accent: 155 18% 13%;
+    --accent-foreground: 52 40% 92%;
+    --destructive: 4 80% 60%;
     --destructive-foreground: 0 0% 98%;
-    --border: 240 6% 18%;
-    --input: 240 6% 18%;
-    --ring: 341 100% 63%;
-    --brand: 341 100% 63%;
-    --brand-2: 262 90% 72%;
+    --border: 155 16% 16%;
+    --input: 155 16% 16%;
+    --ring: 48 96% 62%;
+    --brand: 48 96% 62%;
+    --brand-foreground: 155 40% 7%;
+    --brand-2: 148 52% 58%;
   }
 }
 
@@ -117,6 +120,16 @@
   animation: marquee 30s linear infinite;
 }
 
+.animate-marquee-reverse {
+  animation: marquee 30s linear infinite reverse;
+}
+
+/* "Show layout bounds" from the About phone's developer options */
+.layout-bounds * {
+  outline: 1px solid hsl(var(--brand) / 0.55) !important;
+  outline-offset: -1px;
+}
+
 /* VHS rewind overlay for the v1 easter egg */
 .scanlines {
   background: repeating-linear-gradient(
@@ -157,6 +170,7 @@
   }
   .animate-rise,
   .animate-marquee,
+  .animate-marquee-reverse,
   .animate-jitter {
     animation: none;
   }

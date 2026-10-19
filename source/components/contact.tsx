@@ -2,8 +2,7 @@
 
 import { useState } from "react"
 import { motion } from "framer-motion"
-import { Check, Copy, Github, Linkedin } from "lucide-react"
-import { SectionHeader } from "@/components/ui/section-header"
+import { ArrowUpRight, Check, Copy } from "lucide-react"
 import { site } from "@/lib/site"
 
 export default function Contact() {
@@ -20,49 +19,63 @@ export default function Contact() {
   }
 
   const socials = [
-    { href: site.social.linkedin, label: "LinkedIn", Icon: Linkedin },
-    { href: site.social.github, label: "GitHub", Icon: Github },
+    { href: site.social.linkedin, label: "LinkedIn" },
+    { href: site.social.github, label: "GitHub" },
   ]
 
   return (
-    <section id="contact" className="mx-auto max-w-6xl px-4 py-20 sm:px-6 sm:py-28">
-      <SectionHeader eyebrow="06 / Contact" title="Let's build something." subtitle="Got an idea, a role, or just want to say hi? My inbox is open." />
-
+    <section id="contact" className="relative overflow-hidden px-4 py-28 text-center sm:px-6 sm:py-40">
+      <div
+        aria-hidden
+        className="pointer-events-none absolute bottom-0 left-1/2 h-[380px] w-[680px] -translate-x-1/2 translate-y-1/2 rounded-full bg-brand/15 blur-[120px]"
+      />
       <motion.div
-        initial={{ opacity: 0, y: 24 }}
+        initial={{ opacity: 0, y: 40 }}
         whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6 }}
-        viewport={{ once: true, margin: "-60px" }}
-        className="flex flex-col justify-between gap-8 rounded-3xl border border-border bg-gradient-to-br from-brand/15 via-card to-brand-2/15 p-6 sm:p-10 lg:flex-row lg:items-end"
+        transition={{ duration: 0.8, ease: [0.2, 0.7, 0.2, 1] }}
+        viewport={{ once: true, margin: "-80px" }}
+        className="relative mx-auto max-w-6xl"
       >
-          <div>
-            <p className="text-sm text-muted-foreground">Email me at</p>
-            <button
-              onClick={copyEmail}
-              className="group mt-2 flex max-w-full items-center gap-3 text-left font-display text-xl font-bold sm:text-4xl"
+        <p className="mb-6 font-mono text-xs uppercase tracking-[0.3em] text-brand">Contact</p>
+        <h2 className="font-display text-[clamp(3rem,11vw,9.5rem)] font-bold leading-[0.9] tracking-tighter">
+          Let&apos;s build
+          <br />
+          <span className="text-gradient">something.</span>
+        </h2>
+        <p className="mx-auto mt-8 max-w-md text-muted-foreground sm:text-lg">Got an idea, a role, or just want to say hi? My inbox is open.</p>
+
+        <div className="mt-10 flex flex-col items-center gap-3">
+          <a
+            href={`mailto:${site.email}`}
+            className="group inline-flex max-w-full items-center gap-2 break-all font-display text-xl font-bold underline decoration-brand decoration-2 underline-offset-8 transition-colors hover:text-brand sm:text-3xl"
+          >
+            {site.email}
+            <ArrowUpRight className="h-6 w-6 shrink-0 transition-transform group-hover:-translate-y-1 group-hover:translate-x-1" />
+          </a>
+          <button
+            onClick={copyEmail}
+            className="inline-flex items-center gap-1.5 rounded-full px-3 py-1.5 font-mono text-xs text-muted-foreground transition-colors hover:bg-secondary hover:text-foreground"
+            aria-live="polite"
+          >
+            {copied ? <Check className="h-3.5 w-3.5 text-brand" /> : <Copy className="h-3.5 w-3.5" />}
+            {copied ? "copied to clipboard" : "copy email"}
+          </button>
+        </div>
+
+        <div className="mt-10 flex justify-center gap-8 font-mono text-sm">
+          {socials.map(({ href, label }) => (
+            <a
+              key={label}
+              href={href}
+              target="_blank"
+              rel="noopener noreferrer me"
+              className="group inline-flex items-center gap-1 text-muted-foreground transition-colors hover:text-foreground"
             >
-              <span className="break-all">{site.email}</span>
-              <span className="grid h-9 w-9 shrink-0 place-items-center rounded-full border border-border bg-background text-muted-foreground transition-colors group-hover:text-foreground">
-                {copied ? <Check className="h-4 w-4 text-emerald-500" /> : <Copy className="h-4 w-4" />}
-              </span>
-            </button>
-            <p className="mt-2 h-5 font-mono text-xs text-muted-foreground" aria-live="polite">
-              {copied ? "copied to clipboard ✓" : "click to copy"}
-            </p>
-          </div>
-          <div className="flex flex-wrap gap-3">
-            {socials.map(({ href, label, Icon }) => (
-              <a
-                key={label}
-                href={href}
-                target="_blank"
-                rel="noopener noreferrer me"
-                className="inline-flex h-11 items-center gap-2 rounded-full border border-border bg-background px-4 text-sm transition-all hover:-translate-y-0.5 hover:border-brand hover:text-brand"
-              >
-                <Icon className="h-4 w-4" /> {label}
-              </a>
-            ))}
-          </div>
+              {label}
+              <ArrowUpRight className="h-3.5 w-3.5 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+            </a>
+          ))}
+        </div>
       </motion.div>
     </section>
   )

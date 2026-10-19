@@ -81,7 +81,7 @@ export default function Navbar() {
                 initial={{ opacity: 0, y: 4 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0 }}
-                className="absolute left-0 top-11 whitespace-nowrap rounded bg-brand px-2 py-0.5 font-mono text-[10px] text-white"
+                className="absolute left-0 top-11 whitespace-nowrap rounded bg-brand px-2 py-0.5 font-mono text-[10px] text-brand-foreground"
               >
                 {TAPS_TO_TRAVEL - taps} more…
               </motion.span>

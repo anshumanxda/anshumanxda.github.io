@@ -3,7 +3,6 @@
 import { useCallback, useEffect, useRef, useState } from "react"
 import { AnimatePresence, motion } from "framer-motion"
 import { Bug, Play, RotateCcw, Sparkles, Trophy } from "lucide-react"
-import { SectionHeader } from "@/components/ui/section-header"
 import { cn } from "@/lib/utils"
 
 type Kind = "bug" | "golden" | "feature"
@@ -167,30 +166,39 @@ export default function BugBash() {
   }
 
   return (
-    <section id="play" className="mx-auto max-w-6xl px-4 py-20 sm:px-6 sm:py-28">
-      <SectionHeader
-        eyebrow="04 / Play"
-        title="Bug Bash"
-        subtitle="Release goes out in 20 seconds. Squash every bug you can, but don't touch the features."
-      />
+    <section id="play" className="relative overflow-hidden bg-brand text-brand-foreground">
+      <div className="mx-auto max-w-6xl px-4 py-24 sm:px-6 sm:py-32">
+      <motion.div
+        initial={{ opacity: 0, y: 24 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6 }}
+        viewport={{ once: true, margin: "-80px" }}
+        className="mb-10 text-center sm:mb-14"
+      >
+        <p className="mb-3 font-mono text-xs uppercase tracking-[0.3em] opacity-70">Intermission · a tiny game</p>
+        <h2 className="font-display text-6xl font-bold tracking-tighter sm:text-8xl">Bug Bash</h2>
+        <p className="mx-auto mt-4 max-w-md opacity-80 sm:text-lg">
+          Release goes out in 20 seconds. Squash every bug you can, but don&apos;t touch the features.
+        </p>
+      </motion.div>
 
       <div className="mb-3 flex flex-wrap items-center justify-between gap-3 font-mono text-sm">
         <div className="flex items-center gap-4">
           <span>
-            score <strong className="text-brand tabular-nums">{score}</strong>
+            score <strong className="tabular-nums">{score}</strong>
           </span>
           <span>
             time <strong className={cn("tabular-nums", timeLeft <= 5 && state === "playing" && "text-destructive")}>{timeLeft}s</strong>
           </span>
         </div>
-        <span className="flex items-center gap-1.5 text-muted-foreground">
-          <Trophy className="h-4 w-4" /> best <strong className="tabular-nums text-foreground">{best}</strong>
+        <span className="flex items-center gap-1.5 opacity-80">
+          <Trophy className="h-4 w-4" /> best <strong className="tabular-nums">{best}</strong>
         </span>
       </div>
 
       <div
         ref={arenaRef}
-        className="bg-grid relative h-[380px] touch-manipulation select-none overflow-hidden rounded-3xl border border-border bg-card sm:h-[440px]"
+        className="bg-grid relative h-[380px] touch-manipulation select-none overflow-hidden rounded-3xl bg-card text-foreground shadow-2xl shadow-black/30 sm:h-[460px]"
       >
         {critters.map((c) => {
           const angle = (Math.atan2(c.vy, c.vx) * 180) / Math.PI + 90
@@ -267,7 +275,7 @@ export default function BugBash() {
                 )}
                 <button
                   onClick={start}
-                  className="inline-flex h-11 items-center gap-2 rounded-full bg-brand px-6 font-medium text-white transition-transform hover:scale-105"
+                  className="inline-flex h-11 items-center gap-2 rounded-full bg-brand px-6 font-medium text-brand-foreground transition-transform hover:scale-105"
                 >
                   {state === "idle" ? <Play className="h-4 w-4" /> : <RotateCcw className="h-4 w-4" />}
                   {state === "idle" ? "Start" : "Play again"}
@@ -276,6 +284,7 @@ export default function BugBash() {
             </motion.div>
           )}
         </AnimatePresence>
+      </div>
       </div>
     </section>
   )
