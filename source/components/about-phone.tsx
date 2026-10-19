@@ -37,7 +37,7 @@ function Row({ label, value, onClick, highlight }: { label: string; value: strin
   return (
     <Tag
       onClick={onClick}
-      className={cn("block w-full px-5 py-2.5 text-left", onClick && "transition-colors active:bg-white/5 hover:bg-white/[0.03]")}
+      className={cn("block w-full px-5 py-2.5 text-left", onClick && "select-none transition-colors active:bg-white/5 hover:bg-white/[0.03]")}
       style={{ borderTop: `1px solid ${screen.line}` }}
     >
       <span className="block text-[13px]" style={{ color: highlight ? screen.accent : screen.text }}>
@@ -246,7 +246,7 @@ export default function AboutPhone() {
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0 }}
-                className="absolute inset-x-6 bottom-10 z-30 rounded-2xl px-4 py-2.5 text-center text-[12px] shadow-lg"
+                className="pointer-events-none absolute inset-x-6 bottom-10 z-30 select-none rounded-2xl px-4 py-2.5 text-center text-[12px] shadow-lg"
                 style={{ background: "#2b3530", color: screen.text }}
               >
                 {toast}
